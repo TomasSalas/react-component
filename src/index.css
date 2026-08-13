@@ -1,0 +1,150 @@
+@import "tailwindcss" prefix(rui);
+
+/* Entrada sutil para paneles flotantes (Select, AutoComplete).
+   Solo opacity: estos paneles ya usan transform inline para el flip
+   de posición (arriba/abajo), animar transform aquí lo pisaría. */
+@keyframes rui-pop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.rui-pop-in {
+  animation: rui-pop-in 120ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rui-pop-in {
+    animation: none;
+  }
+}
+
+/* Accordion panel open/close — CSS Grid 0fr→1fr trick, no JS height measurement. */
+.rui-accordion-panel {
+  display: grid;
+  transition: grid-template-rows 200ms ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rui-accordion-panel {
+    transition: none;
+  }
+}
+
+:root {
+  --primary-bg: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-active: #1e40af;
+  --primary-text: #ffffff;
+  --primary-border: #2563eb;
+  --primary-outline: #2563eb;
+  --primary-hover-border: #1d4ed8;
+  --primary-focus: #2563eb;
+
+  --success-bg: #059669;
+  --success-hover: #047857;
+  --success-active: #065f46;
+  --success-text: #ffffff;
+  --success-border: #059669;
+  --success-outline: #059669;
+  --success-hover-border: #047857;
+  --success-focus: #059669;
+
+  --error-bg: #e11d48;
+  --error-hover: #be123c;
+  --error-active: #9f1239;
+  --error-text: #e11d48;
+  --error-border: #e11d48;
+  --error-outline: #e11d48;
+  --error-hover-border: #be123c;
+  --error-focus: #e11d48;
+
+  --warning-bg: #d97706;
+  --warning-hover: #b45309;
+  --warning-active: #92400e;
+  --warning-text: #ffffff;
+  --warning-border: #d97706;
+  --warning-outline: #d97706;
+  --warning-hover-border: #b45309;
+  --warning-focus: #d97706;
+
+  --ghost-hover: #f3f4f6;
+  --ghost-active: #e5e7eb;
+  --ghost-text: #1f2937;
+  --ghost-border: #d1d5db;
+
+  --link-text: #2563eb;
+
+  --disabled-opacity: 0.5;
+  --disabled-cursor: not-allowed;
+  --disabled-bg: #e5e7eb;
+  --disabled-text: #6b7280;
+
+  --primary-selected-bg: #dbeafe;
+  --primary-selected-text: #1e40af;
+  --success-selected-bg: #d1fae5;
+  --success-selected-text: #065f46;
+  --warning-selected-bg: #fef3c7;
+  --warning-selected-text: #92400e;
+  --error-selected-bg: #ffe4e6;
+  --error-selected-text: #9f1239;
+}
+
+.dark {
+  --primary-bg: #3b82f6;
+  --primary-hover: #2563eb;
+  --primary-active: #1d4ed8;
+  --primary-text: #ffffff;
+  --primary-border: #3b82f6;
+  --primary-outline: #3b82f6;
+  --primary-hover-border: #2563eb;
+  --primary-focus: #3b82f6;
+
+  --success-bg: #10b981;
+  --success-hover: #059669;
+  --success-active: #047857;
+  --success-text: #ffffff;
+  --success-border: #10b981;
+  --success-outline: #10b981;
+  --success-hover-border: #059669;
+  --success-focus: #10b981;
+
+  --error-bg: #fb7185;
+  --error-hover: #f43f5e;
+  --error-active: #e11d48;
+  --error-text: #fb7185;
+  --error-border: #fb7185;
+  --error-outline: #fb7185;
+  --error-hover-border: #f43f5e;
+  --error-focus: #fb7185;
+
+  --warning-bg: #f59e0b;
+  --warning-hover: #d97706;
+  --warning-active: #b45309;
+  --warning-text: #ffffff;
+  --warning-border: #f59e0b;
+  --warning-outline: #f59e0b;
+  --warning-hover-border: #d97706;
+  --warning-focus: #f59e0b;
+
+  --ghost-hover: #374151;
+  --ghost-active: #4b5563;
+  --ghost-text: #d1d5db;
+  --ghost-border: #4b5563;
+
+  --link-text: #60a5fa;
+
+  --disabled-opacity: 0.5;
+  --disabled-cursor: not-allowed;
+  --disabled-bg: #4b5563;
+  --disabled-text: #9ca3af;
+
+  --primary-selected-bg: #1e40af;
+  --primary-selected-text: #dbeafe;
+  --success-selected-bg: #065f46;
+  --success-selected-text: #d1fae5;
+  --warning-selected-bg: #92400e;
+  --warning-selected-text: #fef3c7;
+  --error-selected-bg: #9f1239;
+  --error-selected-text: #ffe4e6;
+}
