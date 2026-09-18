@@ -140,7 +140,7 @@ const Toggle = forwardRef((props, ref) => {
         )}
       </label>
 
-      <p id={errorId} className='rui:text-(--error-text) rui:text-xs rui:mt-1 rui:ml-1 rui:font-medium rui:h-1 rui:z-10'>
+      <p id={errorId} role='alert' className='rui:text-(--error-text) rui:text-xs rui:mt-1 rui:ml-1 rui:font-medium rui:h-1 rui:z-10'>
         {errorMessage || ' '}
       </p>
     </div>

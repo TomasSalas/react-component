@@ -74,16 +74,28 @@ const Modal = forwardRef(
       }
     }, [onClose])
 
+    // Efecto de apertura: bloquea el scroll y mueve el foco al modal UNA sola vez
+    // al abrir. No depende de `handleKeyDown` a propósito: ese callback cambia de
+    // identidad cada vez que `onClose` cambia (lo normal si el consumidor pasa un
+    // arrow function inline), y si este efecto dependiera de él, cada re-render del
+    // padre (ej. al tipear en un input controlado dentro del modal) volvería a
+    // ejecutar `.focus()` y le robaría el foco al input en cada tecla.
     useEffect(() => {
       if (!shouldRender || !isOpen) return
       document.body.style.overflow = 'hidden'
-      document.addEventListener('keydown', handleKeyDown)
       modalRef.current?.focus({ preventScroll: true })
       return () => {
         document.body.style.overflow = 'unset'
-        document.removeEventListener('keydown', handleKeyDown)
         previousFocusRef.current?.focus?.({ preventScroll: true })
       }
+    }, [shouldRender, isOpen])
+
+    // Listener de teclado aparte: sí puede reatacharse cuando `handleKeyDown`
+    // cambia (para no quedarse con un `onClose` obsoleto), sin volver a robar foco.
+    useEffect(() => {
+      if (!shouldRender || !isOpen) return
+      document.addEventListener('keydown', handleKeyDown)
+      return () => document.removeEventListener('keydown', handleKeyDown)
     }, [shouldRender, isOpen, handleKeyDown])
 
     if (typeof document === 'undefined' || !shouldRender) return null

@@ -458,7 +458,7 @@ const Autocomplete = forwardRef(
           </div>
           {mounted && createPortal(dropdownContent, document.body)}
         </div>
-        <p id={errorId} className={clsx('rui:absolute rui:text-xs rui:mt-1 rui:h-4 rui:text-(--error-text)')}>
+        <p id={errorId} role='alert' className={clsx('rui:absolute rui:text-xs rui:mt-1 rui:h-4 rui:text-(--error-text)')}>
           {errorMessage}
         </p>
       </div>

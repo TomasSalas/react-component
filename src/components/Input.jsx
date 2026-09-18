@@ -110,7 +110,6 @@ const InputText = forwardRef((props, ref) => {
           ref={setRefs}
           id={id}
           type={type}
-          value={rest.value !== undefined ? rest.value : internalValue}
           onChange={handleInputChange}
           className={inputClasses}
           placeholder={placeholder}
@@ -136,7 +135,7 @@ const InputText = forwardRef((props, ref) => {
           )}
         </div>
       </div>
-      <p id={errorId} className={clsx('rui:absolute rui:text-xs rui:mt-1 rui:h-4 rui:text-(--error-text)')}>
+      <p id={errorId} role='alert' className={clsx('rui:absolute rui:text-xs rui:mt-1 rui:h-4 rui:text-(--error-text)')}>
         {errorMessage}
       </p>
     </div>

@@ -325,7 +325,7 @@ const Select = forwardRef(
 
         {mounted && createPortal(dropdownContent, document.body)}
 
-        <p id={errorId} className='rui:absolute rui:text-xs rui:mt-1 rui:h-4 rui:text-(--error-text)'>
+        <p id={errorId} role='alert' className='rui:absolute rui:text-xs rui:mt-1 rui:h-4 rui:text-(--error-text)'>
           {errorMessage}
         </p>
       </div>
